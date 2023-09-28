@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-class DataAccess(ABC):
+class Database(ABC):
     @abstractmethod
     def get_data(self):
         pass
@@ -17,7 +17,7 @@ class DataAccess(ABC):
     def delete_data(self, data_id):
         pass
 
-class PostgresDataAccess(DataAccess):
+class PostgresDataAccess(Database):
     def __init__(self, config):
         self.config = config
 
@@ -54,7 +54,7 @@ class PostgresDataAccess(DataAccess):
         cur.close()
         conn.close()
 
-class MongoDataAccess(DataAccess):
+class MongoDataAccess(Database):
     def __init__(self, config):
         self.config = config
 
